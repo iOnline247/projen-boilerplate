@@ -4,6 +4,10 @@
     "type": "git",
     "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/boilerplate"
   },
+  "main": "./.projenrc.js",
+  "files": [
+    "**/*"
+  ],
   "scripts": {
     "build": "npx projen build",
     "bundle": "npx projen bundle",
