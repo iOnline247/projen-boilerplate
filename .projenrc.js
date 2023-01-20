@@ -8,7 +8,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
   github: false,
   releaseTrigger: release.ReleaseTrigger.manual(),
   repository: "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/boilerplate",
-  // deps: [],                /* Runtime dependencies of this module. */
+  deps: ["projen"],                /* Runtime dependencies of this module. */
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // devDeps: [],             /* Build dependencies for this module. */
   // packageName: undefined,  /* The "name" in package.json. */
