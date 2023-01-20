@@ -47,14 +47,14 @@
     "jest-junit": "^13",
     "json-schema": "*",
     "npm-check-updates": "^16",
-    "projen": "*",
     "ts-jest": "*",
     "ts-node": "*",
     "typescript": "*"
   },
   "dependencies": {
     "aws-cdk-lib": "^2.1.0",
-    "constructs": "^10.0.5"
+    "constructs": "^10.0.5",
+    "projen": "*"
   },
   "license": "Apache-2.0",
   "version": "0.0.0",
