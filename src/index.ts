@@ -1,5 +1,4 @@
-export class Hello {
-  public sayHello() {
-    return 'hello, world!';
-  }
+import * as projen from 'projen';
+
+export class MyProject extends projen.Project {
 }
