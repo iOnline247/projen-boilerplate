@@ -160,9 +160,31 @@
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
-    "release": {
-      "name": "release",
-      "description": "Prepare a release from \"main\" branch",
+    "publish:git:deploy": {
+      "name": "publish:git:deploy",
+      "description": "Prepends the release changelog onto the project changelog, creates a release commit, and tags the release",
+      "env": {
+        "CHANGELOG": "dist/changelog.md",
+        "RELEASE_TAG_FILE": "dist/releasetag.txt",
+        "PROJECT_CHANGELOG_FILE": "CHANGELOG.md",
+        "VERSION_FILE": "dist/version.txt"
+      },
+      "steps": [
+        {
+          "builtin": "release/update-changelog"
+        },
+        {
+          "builtin": "release/tag-version"
+        },
+        {
+          "exec": "git push --follow-tags origin deploy"
+        }
+      ],
+      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+    },
+    "release:deploy": {
+      "name": "release:deploy",
+      "description": "Prepare a release from \"deploy\" branch",
       "env": {
         "RELEASE": "true"
       },
@@ -181,6 +203,9 @@
         },
         {
           "exec": "git diff --ignore-space-at-eol --exit-code"
+        },
+        {
+          "spawn": "publish:git:deploy"
         }
       ]
     },
@@ -233,19 +258,19 @@
           "exec": "npm update npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='@mrgrain/projen-from-git'"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='@mrgrain/projen-from-git,aws-cdk-lib,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='@mrgrain/projen-from-git'"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='@mrgrain/projen-from-git,aws-cdk-lib,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='@mrgrain/projen-from-git'"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='@mrgrain/projen-from-git,aws-cdk-lib,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='@mrgrain/projen-from-git'"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='@mrgrain/projen-from-git,aws-cdk-lib,constructs'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='@mrgrain/projen-from-git'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='@mrgrain/projen-from-git,aws-cdk-lib,constructs'"
         },
         {
           "exec": "npm install"

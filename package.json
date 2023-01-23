@@ -19,7 +19,8 @@
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
-    "release": "npx projen release",
+    "publish:git:deploy": "npx projen publish:git:deploy",
+    "release:deploy": "npx projen release:deploy",
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
@@ -39,9 +40,11 @@
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "eslint": "^8",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-node": "^0.3.7",
     "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "jest": "^27",
     "jest-junit": "^13",
     "jsii": "^1.73.0",
@@ -50,6 +53,7 @@
     "jsii-pacmak": "^1.73.0",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
+    "prettier": "^2.8.3",
     "projen": "^0.67.9",
     "standard-version": "^9",
     "ts-jest": "^27",
@@ -58,6 +62,10 @@
   },
   "peerDependencies": {
     "projen": "^x.x.x"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.40.0",
+    "constructs": "10.1.94"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
