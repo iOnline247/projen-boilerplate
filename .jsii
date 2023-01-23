@@ -3088,39 +3088,25 @@
     }
   },
   "types": {
-    "boilerplate.MyProject": {
+    "boilerplate.PanlBoilerplateRepoProps": {
       "assembly": "boilerplate",
-      "base": "projen.Project",
+      "datatype": true,
       "docs": {
         "stability": "stable"
       },
-      "fqn": "boilerplate.MyProject",
-      "initializer": {
-        "docs": {
-          "stability": "experimental"
-        },
-        "locationInModule": {
-          "filename": "src/project.ts",
-          "line": 203
-        },
-        "parameters": [
-          {
-            "name": "options",
-            "type": {
-              "fqn": "projen.ProjectOptions"
-            }
-          }
-        ]
-      },
-      "kind": "class",
+      "fqn": "boilerplate.PanlBoilerplateRepoProps",
+      "interfaces": [
+        "projen.awscdk.AwsCdkTypeScriptAppOptions"
+      ],
+      "kind": "interface",
       "locationInModule": {
         "filename": "src/index.ts",
         "line": 3
       },
-      "name": "MyProject",
-      "symbolId": "src/index:MyProject"
+      "name": "PanlBoilerplateRepoProps",
+      "symbolId": "src/index:PanlBoilerplateRepoProps"
     }
   },
   "version": "0.0.0",
-  "fingerprint": "4OV+HXzUzzjgh+QhEVhHrVGJjvMpNWMqrBQxrs/BS2A="
+  "fingerprint": "ARkh1WicwQEyiu3uw3EJdUlneg3o41Gb5jOG7GUstaw="
 }
