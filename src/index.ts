@@ -1,4 +1,4 @@
-import { awscdk, javascript } from 'projen';
+import { awscdk, javascript, release } from 'projen';
 
 const cdkVersion = '2.60.0';
 
@@ -10,6 +10,10 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
       authorName: 'Matthew Bramer',
       authorEmail: 'mbramer@pansophiclearning.com',
       packageManager: javascript.NodePackageManager.NPM,
+      github: false,
+      githubOptions: {
+        mergify: false,
+      },
       readme: {
         filename: 'README.md',
         contents: '# replace this',
@@ -17,6 +21,17 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
       ...options,
       // any options down here would be forced and not changeable
       cdkVersion,
+      releaseTrigger: release.ReleaseTrigger.manual(),
+      projenrcTs: true,
+      releaseToNpm: false,
+      prettier: true,
+      prettierOptions: {
+        settings: {
+          printWidth: 120,
+          singleQuote: true,
+          trailingComma: javascript.TrailingComma.ALL,
+        },
+      },
     });
     // deps are better added like this
     this.addDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94');
