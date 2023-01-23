@@ -3088,6 +3088,38 @@
     }
   },
   "types": {
+    "boilerplate.PanlBoilerplateApp": {
+      "assembly": "boilerplate",
+      "base": "projen.awscdk.AwsCdkTypeScriptApp",
+      "docs": {
+        "stability": "stable"
+      },
+      "fqn": "boilerplate.PanlBoilerplateApp",
+      "initializer": {
+        "docs": {
+          "stability": "stable"
+        },
+        "locationInModule": {
+          "filename": "src/index.ts",
+          "line": 8
+        },
+        "parameters": [
+          {
+            "name": "options",
+            "type": {
+              "fqn": "boilerplate.PanlBoilerplateRepoProps"
+            }
+          }
+        ]
+      },
+      "kind": "class",
+      "locationInModule": {
+        "filename": "src/index.ts",
+        "line": 7
+      },
+      "name": "PanlBoilerplateApp",
+      "symbolId": "src/index:PanlBoilerplateApp"
+    },
     "boilerplate.PanlBoilerplateRepoProps": {
       "assembly": "boilerplate",
       "datatype": true,
@@ -3101,12 +3133,12 @@
       "kind": "interface",
       "locationInModule": {
         "filename": "src/index.ts",
-        "line": 3
+        "line": 5
       },
       "name": "PanlBoilerplateRepoProps",
       "symbolId": "src/index:PanlBoilerplateRepoProps"
     }
   },
   "version": "0.0.0",
-  "fingerprint": "ARkh1WicwQEyiu3uw3EJdUlneg3o41Gb5jOG7GUstaw="
+  "fingerprint": "KnukOhO4vifWgoRQcNASAOi/4uWWmahJSt92qNDwiPg="
 }

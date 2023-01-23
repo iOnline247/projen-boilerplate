@@ -1,30 +1,24 @@
 import { awscdk, javascript } from 'projen';
 
+const cdkVersion = '2.60.0';
+
 export interface PanlBoilerplateRepoProps extends awscdk.AwsCdkTypeScriptAppOptions {}
 
-class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
+export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
   constructor(options: PanlBoilerplateRepoProps) {
-    super(options);
+    super({
+      authorName: 'Matthew Bramer',
+      authorEmail: 'mbramer@pansophiclearning.com',
+      packageManager: javascript.NodePackageManager.NPM,
+      readme: {
+        filename: 'README.md',
+        contents: '# replace this',
+      },
+      ...options,
+      // any options down here would be forced and not changeable
+      cdkVersion,
+    });
+    // deps are better added like this
+    this.addDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94');
   }
 }
-
-const cdkVersion = '2.60.0';
-const project = new PanlBoilerplateApp({
-  authorName: 'Matthew Bramer',
-  authorEmail: 'mbramer@pansophiclearning.com',
-  name: 'boilerplate',
-  packageManager: javascript.NodePackageManager.NPM,
-  defaultReleaseBranch: 'deploy',
-  cdkVersion,
-  readme: {
-    filename: 'README.md',
-    contents: '# replace this',
-  },
-  deps: [`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94'],
-  devDeps: ['@mrgrain/projen-from-git@mrgrain/projen-from-git', 'typescript', 'projen@latest'],
-
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // packageName: undefined,  /* The "name" in package.json. */
-});
-
-project.synth();
