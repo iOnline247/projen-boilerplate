@@ -3088,43 +3088,39 @@
     }
   },
   "types": {
-    "boilerplate.Hello": {
+    "boilerplate.MyProject": {
       "assembly": "boilerplate",
+      "base": "projen.Project",
       "docs": {
         "stability": "stable"
       },
-      "fqn": "boilerplate.Hello",
+      "fqn": "boilerplate.MyProject",
       "initializer": {
         "docs": {
-          "stability": "stable"
-        }
+          "stability": "experimental"
+        },
+        "locationInModule": {
+          "filename": "src/project.ts",
+          "line": 203
+        },
+        "parameters": [
+          {
+            "name": "options",
+            "type": {
+              "fqn": "projen.ProjectOptions"
+            }
+          }
+        ]
       },
       "kind": "class",
       "locationInModule": {
         "filename": "src/index.ts",
-        "line": 1
+        "line": 3
       },
-      "methods": [
-        {
-          "docs": {
-            "stability": "stable"
-          },
-          "locationInModule": {
-            "filename": "src/index.ts",
-            "line": 2
-          },
-          "name": "sayHello",
-          "returns": {
-            "type": {
-              "primitive": "string"
-            }
-          }
-        }
-      ],
-      "name": "Hello",
-      "symbolId": "src/index:Hello"
+      "name": "MyProject",
+      "symbolId": "src/index:MyProject"
     }
   },
   "version": "0.0.0",
-  "fingerprint": "RHb+2Bmg8Klvt3s66A43w9FbP9fFeYg9PX11hvJSqic="
+  "fingerprint": "4OV+HXzUzzjgh+QhEVhHrVGJjvMpNWMqrBQxrs/BS2A="
 }

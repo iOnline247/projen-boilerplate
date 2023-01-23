@@ -1,3 +1,3 @@
-export declare class Hello {
-    sayHello(): string;
+import * as projen from 'projen';
+export declare class MyProject extends projen.Project {
 }
