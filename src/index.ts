@@ -24,6 +24,7 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
       releaseTrigger: release.ReleaseTrigger.manual(),
       projenrcTs: true,
       releaseToNpm: false,
+      licensed: false,
       prettier: true,
       prettierOptions: {
         settings: {
