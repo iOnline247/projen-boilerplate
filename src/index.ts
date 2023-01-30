@@ -1,11 +1,13 @@
 import { awscdk, javascript, release } from 'projen';
+// import * as projen from 'projen';
 
 const cdkVersion = '2.60.0';
 
 export interface PanlBoilerplateRepoProps extends awscdk.AwsCdkTypeScriptAppOptions {}
 
-// export class PanlBoilerplateApp extends javascript.NodeProject {
-export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
+export class PanlBoilerplateApp extends javascript.NodeProject {
+  #_infra: awscdk.AwsCdkTypeScriptApp;
+  // export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
   constructor(options: PanlBoilerplateRepoProps) {
     super({
       authorName: 'Matthew Bramer',
@@ -17,19 +19,17 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
       },
       ...options,
       // any options down here would be forced and not changeable
-      cdkVersion,
       github: false,
       githubOptions: {
         mergify: false,
       },
       releaseTrigger: release.ReleaseTrigger.manual(),
-      projenrcTs: true,
       releaseToNpm: false,
-      eslint: true,
-      eslintOptions: {
-        dirs: ['./src', './infra'],
-        prettier: true,
-      },
+      // eslint: true,
+      // eslintOptions: {
+      //   dirs: ['./src', './infra'],
+      //   prettier: true,
+      // },
       prettier: true,
       prettierOptions: {
         settings: {
@@ -38,19 +38,31 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
           trailingComma: javascript.TrailingComma.ALL,
         },
       },
-      tsconfig: {
-        include: ['./src/**/*.js', './src/**/*.ts', './infra/**/*.ts'],
-        compilerOptions: {
-          allowJs: true,
-          experimentalDecorators: false,
-          inlineSourceMap: !!options?.tsconfig?.compilerOptions?.inlineSourceMap,
-          inlineSources: !!options?.tsconfig?.compilerOptions?.inlineSources,
-        },
-      },
+      // tsconfig: {
+      //   include: ['./src/**/*.js', './src/**/*.ts', './infra/**/*.ts'],
+      //   compilerOptions: {
+      //     allowJs: true,
+      //     experimentalDecorators: false,
+      //     inlineSourceMap: !!options?.tsconfig?.compilerOptions?.inlineSourceMap,
+      //     inlineSources: !!options?.tsconfig?.compilerOptions?.inlineSources,
+      //   },
+      // },
     });
     // deps are better added like this
     this.addDevDeps('projen@*');
     // this.addDevDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*');
     // this.addDeps();
+
+    this.#_infra = new awscdk.AwsCdkTypeScriptApp({
+      name: 'my-frontend-pipeline',
+      parent: this,
+      outdir: 'pipeline',
+      defaultReleaseBranch: 'deploy',
+      packageManager: javascript.NodePackageManager.NPM,
+      cdkVersion,
+      deps: [`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*'],
+    });
+
+    this.#_infra.synth();
   }
 }

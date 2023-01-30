@@ -1,7 +1,6 @@
 import { ProjenProjectFromGit } from '@mrgrain/projen-from-git';
-import { awscdk, javascript, release } from 'projen';
+import { javascript, release } from 'projen';
 
-const cdkVersion = '2.60.0';
 const project = new ProjenProjectFromGit({
   author: 'Matthew Bramer',
   authorAddress: 'mbramer@pansophiclearning.com',
@@ -24,22 +23,11 @@ const project = new ProjenProjectFromGit({
       trailingComma: javascript.TrailingComma.ALL,
     },
   },
-  deps: ['aws-cdk-lib@2.40.0', 'constructs@10.1.94'],
-  devDeps: ['@mrgrain/projen-from-git@mrgrain/projen-from-git', 'typescript', 'projen@latest'],
+  // deps: ['aws-cdk-lib@2.40.0', 'constructs@10.1.94'],
+  devDeps: ['@mrgrain/projen-from-git@mrgrain/projen-from-git', 'typescript', 'projen@*'],
 
   // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
   // packageName: undefined,  /* The "name" in package.json. */
 });
 
 project.synth();
-
-const pipelineProject = new awscdk.AwsCdkTypeScriptApp({
-  name: 'my-frontend-pipeline',
-  parent: project,
-  outdir: 'pipeline',
-  defaultReleaseBranch: 'deploy',
-  cdkVersion: '1.78.0',
-  cdkDependencies: [`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*'],
-});
-
-pipelineProject.synth();
