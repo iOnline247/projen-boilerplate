@@ -1,6 +1,7 @@
 import { ProjenProjectFromGit } from '@mrgrain/projen-from-git';
-import { javascript, release } from 'projen';
+import { awscdk, javascript, release } from 'projen';
 
+const cdkVersion = '2.60.0';
 const project = new ProjenProjectFromGit({
   author: 'Matthew Bramer',
   authorAddress: 'mbramer@pansophiclearning.com',
@@ -31,3 +32,14 @@ const project = new ProjenProjectFromGit({
 });
 
 project.synth();
+
+const pipelineProject = new awscdk.AwsCdkTypeScriptApp({
+  name: 'my-frontend-pipeline',
+  parent: project,
+  outdir: 'pipeline',
+  defaultReleaseBranch: 'deploy',
+  cdkVersion: '1.78.0',
+  cdkDependencies: [`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*'],
+});
+
+pipelineProject.synth();
