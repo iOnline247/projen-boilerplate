@@ -11,21 +11,25 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
       authorName: 'Matthew Bramer',
       authorEmail: 'mbramer@pansophiclearning.com',
       packageManager: javascript.NodePackageManager.NPM,
-      github: false,
-      githubOptions: {
-        mergify: false,
-      },
       readme: {
         filename: 'README.md',
-        contents: '# replace this',
+        contents: '# did this change?',
       },
       ...options,
       // any options down here would be forced and not changeable
       cdkVersion,
+      github: false,
+      githubOptions: {
+        mergify: false,
+      },
       releaseTrigger: release.ReleaseTrigger.manual(),
       projenrcTs: true,
       releaseToNpm: false,
-      licensed: false,
+      eslint: true,
+      eslintOptions: {
+        dirs: ['./src', './infra'],
+        prettier: true,
+      },
       prettier: true,
       prettierOptions: {
         settings: {
@@ -34,8 +38,19 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
           trailingComma: javascript.TrailingComma.ALL,
         },
       },
+      tsconfig: {
+        include: ['./src/**/*.js', './src/**/*.ts', './infra/**/*.ts'],
+        compilerOptions: {
+          allowJs: true,
+          experimentalDecorators: false,
+          inlineSourceMap: !!options?.tsconfig?.compilerOptions?.inlineSourceMap,
+          inlineSources: !!options?.tsconfig?.compilerOptions?.inlineSources,
+        },
+      },
     });
     // deps are better added like this
-    // this.addDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94');
+    this.addDevDeps('projen@*');
+    // this.addDevDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*');
+    // this.addDeps();
   }
 }
