@@ -1,4 +1,4 @@
-import { awscdk, javascript, release } from 'projen';
+import { awscdk, javascript, release, typescript } from 'projen';
 // import * as projen from 'projen';
 
 const cdkVersion = '2.60.0';
@@ -6,7 +6,7 @@ const cdkVersion = '2.60.0';
 export interface PanlBoilerplateRepoProps extends awscdk.AwsCdkTypeScriptAppOptions {}
 
 // export class PanlBoilerplateApp extends javascript.NodeProject {
-export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
+export class PanlBoilerplateApp extends typescript.TypeScriptAppProject {
   // #infra: awscdk.AwsCdkTypeScriptApp;
 
   constructor(options: PanlBoilerplateRepoProps) {
