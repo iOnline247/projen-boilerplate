@@ -12,6 +12,7 @@ const project = new ProjenProjectFromGit({
   githubOptions: {
     mergify: false,
   },
+  docgen: false,
   packageManager: javascript.NodePackageManager.NPM,
   releaseTrigger: release.ReleaseTrigger.manual(),
   releaseToNpm: false,

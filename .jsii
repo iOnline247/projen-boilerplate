@@ -82,7 +82,7 @@
   "types": {
     "boilerplate.PanlBoilerplateApp": {
       "assembly": "boilerplate",
-      "base": "projen.awscdk.AwsCdkTypeScriptApp",
+      "base": "projen.typescript.TypeScriptAppProject",
       "docs": {
         "stability": "stable"
       },
@@ -132,5 +132,5 @@
     }
   },
   "version": "0.0.0",
-  "fingerprint": "rj/2/7vg+00YNEBmMHuUBbsCOC7ic7S38ZBd7XMADls="
+  "fingerprint": "DpzGG66Fjwa8Uqunt/1e6q5VTknq8sTNF7VYW80JgDk="
 }

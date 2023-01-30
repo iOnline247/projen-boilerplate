@@ -43,4 +43,3 @@ junit.xml
 /dist/
 !/.eslintrc.json
 tsconfig.json
-!/API.md
