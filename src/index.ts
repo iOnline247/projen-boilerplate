@@ -5,10 +5,7 @@ const cdkVersion = '2.60.0';
 
 export interface PanlBoilerplateRepoProps extends awscdk.AwsCdkTypeScriptAppOptions {}
 
-// export class PanlBoilerplateApp extends javascript.NodeProject {
 export class PanlBoilerplateApp extends typescript.TypeScriptAppProject {
-  // #infra: awscdk.AwsCdkTypeScriptApp;
-
   constructor(options: PanlBoilerplateRepoProps) {
     super({
       authorName: 'Matthew Bramer',
@@ -63,6 +60,8 @@ export class PanlBoilerplateApp extends typescript.TypeScriptAppProject {
       packageManager: javascript.NodePackageManager.NPM,
       cdkVersion,
       deps: [`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*'],
+      eslint: false,
+      prettier: false,
     });
 
     infra.synth();
