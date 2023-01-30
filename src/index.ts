@@ -37,6 +37,7 @@ export class PanlBoilerplateApp extends typescript.TypeScriptAppProject {
         },
       },
       tsconfig: {
+        exclude: ['infra/**/*.ts'],
         include: ['src/**/*.js'],
         compilerOptions: {
           allowJs: true,
