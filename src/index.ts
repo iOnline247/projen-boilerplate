@@ -5,9 +5,10 @@ const cdkVersion = '2.60.0';
 
 export interface PanlBoilerplateRepoProps extends awscdk.AwsCdkTypeScriptAppOptions {}
 
-export class PanlBoilerplateApp extends javascript.NodeProject {
-  #_infra: awscdk.AwsCdkTypeScriptApp;
-  // export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
+// export class PanlBoilerplateApp extends javascript.NodeProject {
+export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
+  // #infra: awscdk.AwsCdkTypeScriptApp;
+
   constructor(options: PanlBoilerplateRepoProps) {
     super({
       authorName: 'Matthew Bramer',
@@ -25,11 +26,11 @@ export class PanlBoilerplateApp extends javascript.NodeProject {
       },
       releaseTrigger: release.ReleaseTrigger.manual(),
       releaseToNpm: false,
-      // eslint: true,
-      // eslintOptions: {
-      //   dirs: ['./src', './infra'],
-      //   prettier: true,
-      // },
+      eslint: true,
+      eslintOptions: {
+        dirs: ['./src', './infra'],
+        prettier: true,
+      },
       prettier: true,
       prettierOptions: {
         settings: {
@@ -38,31 +39,32 @@ export class PanlBoilerplateApp extends javascript.NodeProject {
           trailingComma: javascript.TrailingComma.ALL,
         },
       },
-      // tsconfig: {
-      //   include: ['./src/**/*.js', './src/**/*.ts', './infra/**/*.ts'],
-      //   compilerOptions: {
-      //     allowJs: true,
-      //     experimentalDecorators: false,
-      //     inlineSourceMap: !!options?.tsconfig?.compilerOptions?.inlineSourceMap,
-      //     inlineSources: !!options?.tsconfig?.compilerOptions?.inlineSources,
-      //   },
-      // },
+      tsconfig: {
+        include: ['./src/**/*.js', './src/**/*.ts', './infra/**/*.ts'],
+        compilerOptions: {
+          allowJs: true,
+          experimentalDecorators: false,
+          inlineSourceMap: !!options?.tsconfig?.compilerOptions?.inlineSourceMap,
+          inlineSources: !!options?.tsconfig?.compilerOptions?.inlineSources,
+        },
+      },
     });
-    // deps are better added like this
+    // TODO:
+    // warning JSII6: A "peerDependency" on "projen" at "^x.x.x" means you should take a "devDependency" on "projen" at "0.0.0" (found "^0.67.9")
     this.addDevDeps('projen@*');
     // this.addDevDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*');
     // this.addDeps();
 
-    this.#_infra = new awscdk.AwsCdkTypeScriptApp({
-      name: 'my-frontend-pipeline',
+    const infra = new awscdk.AwsCdkTypeScriptApp({
+      name: 'infra-pipeline',
       parent: this,
-      outdir: 'pipeline',
+      outdir: 'infra',
       defaultReleaseBranch: 'deploy',
       packageManager: javascript.NodePackageManager.NPM,
       cdkVersion,
       deps: [`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94', 'projen@*'],
     });
 
-    this.#_infra.synth();
+    infra.synth();
   }
 }

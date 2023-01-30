@@ -93,7 +93,7 @@
         },
         "locationInModule": {
           "filename": "src/index.ts",
-          "line": 9
+          "line": 12
         },
         "parameters": [
           {
@@ -107,7 +107,7 @@
       "kind": "class",
       "locationInModule": {
         "filename": "src/index.ts",
-        "line": 8
+        "line": 9
       },
       "name": "PanlBoilerplateApp",
       "symbolId": "src/index:PanlBoilerplateApp"
@@ -125,12 +125,12 @@
       "kind": "interface",
       "locationInModule": {
         "filename": "src/index.ts",
-        "line": 5
+        "line": 6
       },
       "name": "PanlBoilerplateRepoProps",
       "symbolId": "src/index:PanlBoilerplateRepoProps"
     }
   },
   "version": "0.0.0",
-  "fingerprint": "Zz9YZQMiBtOW6i+nE32mn3JX+VmWxraIw8wwYGXn5iM="
+  "fingerprint": "rj/2/7vg+00YNEBmMHuUBbsCOC7ic7S38ZBd7XMADls="
 }
