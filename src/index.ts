@@ -4,6 +4,7 @@ const cdkVersion = '2.60.0';
 
 export interface PanlBoilerplateRepoProps extends awscdk.AwsCdkTypeScriptAppOptions {}
 
+// export class PanlBoilerplateApp extends javascript.NodeProject {
 export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
   constructor(options: PanlBoilerplateRepoProps) {
     super({

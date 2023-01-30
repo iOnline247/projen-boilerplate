@@ -3101,7 +3101,7 @@
         },
         "locationInModule": {
           "filename": "src/index.ts",
-          "line": 8
+          "line": 9
         },
         "parameters": [
           {
@@ -3115,7 +3115,7 @@
       "kind": "class",
       "locationInModule": {
         "filename": "src/index.ts",
-        "line": 7
+        "line": 8
       },
       "name": "PanlBoilerplateApp",
       "symbolId": "src/index:PanlBoilerplateApp"
@@ -3140,5 +3140,5 @@
     }
   },
   "version": "0.0.0",
-  "fingerprint": "KnukOhO4vifWgoRQcNASAOi/4uWWmahJSt92qNDwiPg="
+  "fingerprint": "ovUJuxYoAJDK0HpWjwt8epuMgx4uCbOTCtomwDmzj9Y="
 }
