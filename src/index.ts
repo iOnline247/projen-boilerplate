@@ -35,6 +35,6 @@ export class PanlBoilerplateApp extends awscdk.AwsCdkTypeScriptApp {
       },
     });
     // deps are better added like this
-    this.addDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94');
+    // this.addDeps(`aws-cdk-lib@${cdkVersion}`, 'constructs@10.1.94');
   }
 }
