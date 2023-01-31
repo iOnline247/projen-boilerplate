@@ -3,7 +3,6 @@ import { javascript, release } from 'projen';
 
 const project = new ProjenProjectFromGit({
   author: 'Matthew Bramer',
-  authorAddress: 'mbramer@pansophiclearning.com',
   name: 'boilerplate',
   repositoryUrl: 'https://git-codecommit.us-east-1.amazonaws.com/v1/repos/boilerplate',
   defaultReleaseBranch: 'deploy',
