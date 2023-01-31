@@ -2,7 +2,7 @@
   "name": "boilerplate",
   "repository": {
     "type": "git",
-    "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/boilerplate"
+    "url": "https://github.com/iOnline247/projen-boilerplate"
   },
   "scripts": {
     "build": "npx projen build",
@@ -29,7 +29,7 @@
   },
   "author": {
     "name": "Matthew Bramer",
-    "email": "mbramer@pansophiclearning.com",
+    "email": "mbramer@github.com",
     "organization": false
   },
   "devDependencies": {

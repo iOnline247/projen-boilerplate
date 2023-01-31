@@ -3,6 +3,7 @@ import { javascript, release } from 'projen';
 
 const project = new ProjenProjectFromGit({
   author: 'Matthew Bramer',
+  authorAddress: 'mbramer@github.com',
   name: 'boilerplate',
   repositoryUrl: 'https://github.com/iOnline247/projen-boilerplate',
   defaultReleaseBranch: 'deploy',
